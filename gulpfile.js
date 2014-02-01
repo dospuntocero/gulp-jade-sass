@@ -16,7 +16,11 @@ var app,
     sass        = require('gulp-sass'),
     server      = lr(),
     staticServer,
-    uglify      = require('gulp-uglify');
+    uglify      = require('gulp-uglify'),
+    less        = require('gulp-less');
+
+//at the moment either less or sass
+var preprocessor = 'less';
 
 
 // move static assets
@@ -47,14 +51,30 @@ gulp.task('jade', function() {
 });
 
 
-// compile scss as compressed css
-gulp.task('sass', function() {
-    gulp.src('src/scss/*.scss')
-        .pipe(changed('dist/css'))
-        .pipe(rename('style.css'))
-        .pipe(sass({'outputStyle':'compressed'}))
-        .pipe(livereload(server))
-        .pipe(gulp.dest('dist/css'));
+// compile css using preprocessors
+gulp.task('css', function() {
+    switch(preprocessor){
+        case 'less':
+            gulp.src('src/less/**/*.less')
+                .pipe(less())
+                .pipe(rename('style.css'))
+                .pipe(livereload(server))
+                .pipe(gulp.dest('dist/css'));
+            break;
+        case 'sass':
+        case 'scss':
+            gulp.src('src/scss/*.scss')
+                .pipe(changed('dist/css'))
+                .pipe(rename('style.css'))
+                .pipe(sass({'outputStyle':'compressed'}))
+                .pipe(livereload(server))
+                .pipe(gulp.dest('./dist/css'));
+            break;
+        default:
+            console.log(' ============================================== ');
+            console.log(' = you need to define your preprocessor first = ');
+            console.log(' ============================================== ');
+    }
 });
 
 
@@ -73,7 +93,7 @@ staticServer = function(port) {
     app = express();
     app.use(express.static(path.resolve('dist')));
     app.listen(port, function() {
-        gulputil.log('Listening on', port);
+        gulputil.log('Listening on http://localhost:'+port);
     });
     return {
         app: app
@@ -90,11 +110,16 @@ gulp.task('default', function() {
             return console.log(err)
         };
         // run all tasks on first run
-        gulp.run('clean', 'sass', 'jade', 'assets', 'uglify');
+        gulp.run('clean', 'css', 'jade', 'assets', 'uglify');
+
         // start watching src files
         gulp.watch('src/scss/*.scss', function(event){
-            gulp.run('sass');
+            gulp.run('css');
         });
+        gulp.watch('src/less/*.less', function(event){
+            gulp.run('css');
+        });
+
         gulp.watch('src/js/*.js', function(event){
             gulp.run('uglify');
         });
