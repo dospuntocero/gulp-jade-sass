@@ -1,5 +1,5 @@
 block mainVars
-	- Navigation = [{title:'HOME',link:'index'},{title:'ABOUT US',link:'about-us'},{title:'CONTACT',link:'contact'}]
+	- Navigation = [{title:'HOME',link:''},{title:'ABOUT US',link:'about-us'},{title:'CONTACT',link:'contact-us'}]
 	- FooterNavigation = [{title:'PRIVACY POLICY',link:'privacy-policy'}]
 	- page = ''
 	- section = ''
@@ -9,9 +9,22 @@ html
 	include default-partials/html-head
 
 	body
-		include default-partials/header
+		header
+			nav
+				a(href="/",title="back to home")#logo
+					img(src='/img/logo.gif')
 
-		section(id='#{currentPage}').main
-			block content
+				ul
+					- each page,i in Navigation
+						- if (currentPage === page.link)
+							li(class='#{page.link}')
+								a(href='/#{page.link}').active #{page.title}
+						- else
+							li(class="#{page.link}")
+								a(href='/#{page.link}') #{page.title}
+
+		div(id='#{currentPage}').main
+			section#page
+				block content
 
 		include default-partials/footer

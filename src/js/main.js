@@ -7,7 +7,6 @@
     // =============
     var hello = 'Hello',
         world = 'World',
-        console,
         Helpers,
         setup;
 
@@ -62,7 +61,7 @@
         // you need a main section with class .main and id as the page template
         // those pages specific codes will be triggered from this setup main function
 
-        'home': function() {
+        'index': function() {
             console.log('homepage exclusive functions here');
             helloWorld();
           //return $.when( $('#home #caroussel').catslider() )
@@ -96,7 +95,7 @@
       var load = function(href) {
         return Helpers.scrollTop()
           .then(function() {
-            $('header nav a').removeClass('selected');
+            $('header nav a').removeClass('active');
             return Helpers.fade();
           })
           .then(function() {
@@ -107,14 +106,14 @@
                 $fragment = $body.filter('div.main');
 
             return {
-                $el: $fragment, page: $fragment.attr('id'), selected: $('nav a.selected', $body.filter('header')).attr('href')
+                $el: $fragment, page: $fragment.attr('id'), active: $('nav a.active', $body.filter('header')).attr('href')
             };
           })
           .then(function(loaded) {
             return $('body > div.main').attr('data-to', loaded.page).delay(250).promise().then(
               function() {
                 $('body > div.main').attr('id', loaded.page).html(loaded.$el.html()).removeAttr('data-to');
-                $('header nav a[href="' + loaded.selected + '"]').addClass('selected');
+                $('header nav a[href="' + loaded.active + '"]').addClass('active');
                 return loaded;
               }
             );

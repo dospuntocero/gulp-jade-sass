@@ -1,9 +1,11 @@
-extends layouts/default
+extends ../layouts/default
+
 append mainVars
-	- currentPage = 'contact'
+	- currentPage = 'contact-us'
 	- pageTitle = 'Welcome to the contact page'
 	- metaKey = 'add, some, keywords'
 	- metaDesc = 'This is the page description.'
+
 block content
 	.first
 		p This is the contact page! A form would look nice here.

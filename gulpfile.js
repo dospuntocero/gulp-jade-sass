@@ -20,7 +20,7 @@ var app,
     less        = require('gulp-less');
 
 //at the moment either less or sass
-var preprocessor = 'less';
+var preprocessor = 'sass';
 
 
 // move static assets
