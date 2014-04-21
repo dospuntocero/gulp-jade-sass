@@ -28,7 +28,7 @@ gulp.task('assets', function() {
     return es.concat(
         gulp.src('src/js/vendor/*.js')
             .pipe(gulp.dest('dist/js/vendor')),
-        gulp.src('src/img/*')
+        gulp.src('src/img/**')
             .pipe(gulp.dest('dist/img'))
     );
 });
@@ -43,7 +43,7 @@ gulp.task('clean', function() {
 
 // jade to html
 gulp.task('jade', function() {
-    gulp.src('src/jade/*.jade')
+    gulp.src('src/jade/**/*.jade')
         .pipe(jade({'pretty':true}))
         .pipe(livereload(server))
         .pipe(gulpif(isdev, embedlr()))

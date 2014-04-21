@@ -1,11 +1,13 @@
-// Footer
+//- Footer
 footer.footer
-    p © 2015 Mysite. All rights reserved.
-    nav
-        ul
-            - each page,i in FooterNavigation
-                li(class="#{page.link}")
-                        a(href='#{page.link}.html') #{page.title}
+	p © 2015 Mysite. All rights reserved.
+	if FooterNavigation
+		nav
+			ul
+				- each page,i in FooterNavigation
+					li(class="#{page.link}")
+							a(href='#{page.link}.html') #{page.title}
 
-script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+//- script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+script(src='js/vendor/jquery-2.0.3.min.js')
 script(src='js/main.js')

@@ -1,13 +1,17 @@
 block mainVars
-    - Navigation = [{title:'HOME',link:'index'},{title:'ABOUT US',link:'about-us'},{title:'CONTACT',link:'contact'}]
-
-    - FooterNavigation = [{title:'PRIVACY POLICY',link:'privacy-policy'}]
-
+	- Navigation = [{title:'HOME',link:'index'},{title:'ABOUT US',link:'about-us'},{title:'CONTACT',link:'contact'}]
+	- FooterNavigation = [{title:'PRIVACY POLICY',link:'privacy-policy'}]
+	- page = ''
+	- section = ''
 
 doctype html
 html
-    include default-partials/html-head
-    body(class=page)
-        include default-partials/header
-        block content
-        include default-partials/footer
+	include default-partials/html-head
+
+	body
+		include default-partials/header
+
+		section(id='#{currentPage}').main
+			block content
+
+		include default-partials/footer

@@ -1,11 +1,13 @@
-header.header
-    img(src='img/logo.gif')
-    nav
-        ul
-            - each page,i in Navigation
-                - if (currentPage === page.link)
-                    li(class='#{page.link}').active
-                        a(href='#{page.link}.html') #{page.title}
-                - else
-                    li(class="#{page.link}")
-                        a(href='#{page.link}.html') #{page.title}
+header
+	nav
+		a(href="/",title="back to home")#logo
+			img(src='img/logo.gif')
+
+		ul
+			- each page,i in Navigation
+				- if (currentPage === page.link)
+					li(class='#{page.link}').active
+						a(href='/#{page.link}') #{page.title}
+				- else
+					li(class="#{page.link}")
+						a(href='/#{page.link}') #{page.title}

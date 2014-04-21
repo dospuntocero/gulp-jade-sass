@@ -1,1 +1,0 @@
-!function(){"use strict";function o(){console.log(l+", "+n+"!")}var l="Hello",n="World";o()}();

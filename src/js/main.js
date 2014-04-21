@@ -8,12 +8,13 @@
     var hello = 'Hello',
         world = 'World',
         console,
-        Modernizr;
+        Helpers,
+        setup;
 
     // ============================
     // = avoid console.log errors =
     // ============================
-    
+
     if (typeof console === "undefined") {
         window.console = {
             log: function () {}
@@ -24,7 +25,7 @@
     // = Useful functions & helpers =
     // ==============================
 
-    var Helpers = {
+    Helpers = {
 
       scrollTop: function() {
         return $(document.body).animate({scrollTop: 0}, Math.min(250, $(document.body).scrollTop())).promise();
@@ -47,6 +48,7 @@
     // ===================
     // = other functions =
     // ===================
+
     function helloWorld() {
         console.log(hello + ', ' + world + '!');
     }
@@ -56,7 +58,7 @@
     // = Call Functions =
     // ==================
 
-    var setup = {
+    setup = {
         // you need a main section with class .main and id as the page template
         // those pages specific codes will be triggered from this setup main function
 
@@ -81,13 +83,13 @@
     // = Initial setup =
     // =================
     setup.init();
-    
-    
+
+
     // ===================================================
     // = Pretty page transitions if the browser supports
     // = HTML5 pushState
     // ===================================================
-    
+
 
     if(Modernizr.history) {
 
@@ -128,13 +130,13 @@
 
       // Intercept clicks on links
       $(document.body).on('click', '[href]', function(e) {
-      
+
         var href = $(this).attr('href');
 
         if(!/https?:\/\//.test(href) || href.replace(/https?:\/\//, '').indexOf(document.location.host) !== 0) {
 
           history.pushState(null, null, href);
-        
+
           for(var i=0; i<external.length; i++) {
             if(document.location.pathname.indexOf(external[i]) === 0) {
               history.pushState(null, null, url);
@@ -147,13 +149,13 @@
           e.preventDefault();
           load(href);
         }
-      
+
       });
 
       // ==========================
       // = Intercept form submits =
       // ==========================
-      
+
       $(document.body).on('submit', 'form[method=GET]', function(e) {
         e.preventDefault();
         var action = $(this).attr('action'),
