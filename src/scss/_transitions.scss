@@ -19,15 +19,16 @@ div.main.fade > section:not(:first-child)  {
   opacity: 0;
 }
 
+//heights must be the same as the final value
 
 [data-to=about-us] > section {
-  height: 90px !important;
+  height: 300px !important;
 }
 
 [data-to=index] > section {
-  height: 90px !important;
+  height: 400px !important;
 }
 
 [data-to=contact-us] > section {
-  height: 90px !important;
+  height: 100px !important;
 }
