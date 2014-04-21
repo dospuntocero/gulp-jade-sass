@@ -4,13 +4,14 @@
 
 div.main > section:first-child {
   box-sizing:border-box;
-  overflow: hidden;
   transition: .5s height;
+  backface-visibility:hidden;
 }
 
 div.main > section:first-child > *,
 div.main > section:not(:first-child)  {
   transition: .5s opacity;
+  backface-visibility:hidden;
 }
 
 div.main.fade > section:first-child > *,
@@ -18,15 +19,15 @@ div.main.fade > section:not(:first-child)  {
   opacity: 0;
 }
 
-//
-//[data-to=about-us] > section {
-//  height: 90px !important;
-//}
-//
+
+[data-to=about-us] > section {
+  height: 90px !important;
+}
+
 [data-to=index] > section {
   height: 90px !important;
 }
-//
-//[data-to=contact-us] > section {
-//  height: 90px !important;
-//}
+
+[data-to=contact-us] > section {
+  height: 90px !important;
+}

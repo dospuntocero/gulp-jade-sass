@@ -10,6 +10,9 @@
         Helpers,
         setup;
 
+    var console = (window.console = window.console || {});
+
+
     // ============================
     // = avoid console.log errors =
     // ============================
