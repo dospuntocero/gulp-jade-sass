@@ -5,24 +5,43 @@
 
 
 body {
-    margin: 0 auto;
-    width: 90%;
+  margin: 0 auto;
+  width: 90%;
 }
 
 header {
+  display: block;
+  padding: 0 0 50px 0;
+  height: 100px;
+
+  #logo{
     display: block;
-    padding: 0 0 50px 0;
-    nav {
-        ul {
-            float: right;
-            list-style-type: none;
-            margin: 0;
-            li {
-                float: left;
-                margin-left: 20px;
-            }
-        }
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style-type: none;
+    margin: 0;
+  }
+  li {
+    float: left;
+    margin-left: 20px;
+
+    a{
+      padding: 0 1em;
+      text-decoration: none;
+      &.active,&:hover{
+        background-color: #eee;
+      }
+
     }
+  }
+  a{
+    display: block;
+    line-height: 100px;
+    transition: .5s background-color;
+
+  }
 }
 
 .main {
@@ -35,17 +54,17 @@ header {
 }
 
 .footer {
-    padding: 25px 0;
-    nav {
-        ul {
-            list-style-type: none;
-            margin: 0;
-            li {
-                float: left;
-                margin-right: 20px;
-            }
-        }
+  padding: 25px 0;
+  nav {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      li {
+        float: left;
+        margin-right: 20px;
+      }
     }
+  }
 }
 
 
