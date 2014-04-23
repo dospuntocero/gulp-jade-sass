@@ -40,16 +40,15 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 
-
 // jade to html
 gulp.task('jade', function() {
+    var database = require('./database.json');
     gulp.src('src/jade/**/*.jade')
-        .pipe(jade({'pretty':true}))
+        .pipe(jade({'pretty':true,'locals':database}))
         .pipe(livereload(server))
         .pipe(gulpif(isdev, embedlr()))
         .pipe(gulp.dest('dist'));
 });
-
 
 // compile css using preprocessors
 gulp.task('css', function() {
