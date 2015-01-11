@@ -1,14 +1,32 @@
 @import "partials/_normalize";
 @import "partials/_variables";
+@import "partials/_layout";
 @import "partials/_mixins";
-@import "partials/_transitions";
+
+
+.container {
+	width: 90%;
+	max-width: $M; // breakpoints inside partials > _layout.scss
+	margin: 0 auto;
+	@include clearfix;
+}
+
+
 
 
 body {
   margin: 0 auto;
   width: 90%;
   background: #aaffca;
+  font: {
+    size: 1.6rem;
+    family: $primary-font; // variables inside partials > _variables.scss
+  }
+  
 }
+
+
+
 
 header {
   display: block;
