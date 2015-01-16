@@ -92,9 +92,7 @@
     // = HTML5 pushState
     // ===================================================
 
-
     if(Modernizr.history) {
-
       var load = function(href) {
         return Helpers.scrollTop()
           .then(function() {
