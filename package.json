@@ -24,11 +24,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "del": "^0.1.1",
     "ecstatic": "^0.5.4",
     "express": "^4.6.1",
     "gulp": "^3.8.6",
     "gulp-changed": "^0.4.0",
+    "gulp-clean": "^0.3.1",
     "gulp-embedlr": "^0.5.2",
     "gulp-if": "^1.2.2",
     "gulp-ignore": "^1.1.0",
