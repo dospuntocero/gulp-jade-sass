@@ -1,6 +1,5 @@
 var app,
     changed     = require('gulp-changed'),
-    del         = require('del'),
     embedlr     = require('gulp-embedlr'),
     ecsport     = 8888,
     ecstatic    = require('ecstatic')({root: './dist', cache: 'no-cache', showDir: true}), port = ecsport,
@@ -15,7 +14,8 @@ var app,
     path        = require('path'),
     sass        = require('gulp-sass'),
     uglify      = require('gulp-uglify'),
-    url         = require('url');
+    url         = require('url'),
+    clear       = require('gulp-clean');
 
 // check to see if --live was set
 process.argv.forEach(function (val) {
@@ -25,8 +25,9 @@ process.argv.forEach(function (val) {
 });
 
 // clear dist
-gulp.task('clean', function (cb) {
-    del(['./dist/**/*.*'], cb);
+gulp.task('clean', function () {
+    return gulp.src('./dist/*.*', { read: false })
+        .pipe(clear({force:true}));
 });
 
 // compile scss as compressed css
